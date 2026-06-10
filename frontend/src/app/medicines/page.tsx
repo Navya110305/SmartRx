@@ -43,7 +43,7 @@ export default function MedicinesPage() {
       medicines.forEach(med => {
         if (med.reminder_enabled && med.reminder_time === currentTime && med.status !== 'Taken') {
           if ("Notification" in window && Notification.permission === "granted") {
-            new Notification("Prescripto AI Reminder", {
+            new Notification("SmartRx Reminder", {
               body: `Time to take your ${med.name} (${med.dosage})`,
               icon: "/favicon.ico"
             });
@@ -112,7 +112,7 @@ export default function MedicinesPage() {
         
         // Simulate a notification
         if ("Notification" in window && Notification.permission === "granted") {
-          new Notification("Prescripto AI", { body: "Great job! Medicine marked as taken." });
+          new Notification("SmartRx", { body: "Great job! Medicine marked as taken." });
         }
       }
     } catch (err) {
@@ -204,15 +204,15 @@ export default function MedicinesPage() {
     <div className="flex flex-col h-full gap-6 pb-6">
       <motion.header initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="py-2">
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400">Tracker</h1>
+          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-emerald-400">Tracker</h1>
           <button 
             onClick={() => setIsAddModalOpen(true)}
-            className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center shadow-lg shadow-blue-500/30 hover:bg-blue-400 transition-colors"
+            className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center shadow-lg shadow-teal-500/30 hover:bg-teal-400 transition-colors"
           >
             <Plus size={20} className="text-white" />
           </button>
         </div>
-        <div className="glass-panel flex items-center gap-3 px-4 py-3 rounded-full border border-slate-600 focus-within:border-blue-500/50 transition-colors shadow-lg">
+        <div className="glass-panel flex items-center gap-3 px-4 py-3 rounded-full border border-slate-600 focus-within:border-teal-500/50 transition-colors shadow-lg">
           <Search size={20} className="text-slate-400" />
           <input 
             type="text" 
@@ -224,9 +224,9 @@ export default function MedicinesPage() {
         </div>
         
         <div className="flex gap-2 mt-4 overflow-x-auto pb-2 no-scrollbar">
-          <div className="glass-panel px-4 py-2 rounded-2xl flex items-center gap-2 border-blue-500/30 bg-blue-500/10 shadow-lg shrink-0">
-            <Trophy size={16} className="text-blue-400" />
-            <span className="text-xs font-bold text-blue-100">Streak: {streak} days</span>
+          <div className="glass-panel px-4 py-2 rounded-2xl flex items-center gap-2 border-teal-500/30 bg-teal-500/10 shadow-lg shrink-0">
+            <Trophy size={16} className="text-teal-400" />
+            <span className="text-xs font-bold text-teal-100">Streak: {streak} days</span>
           </div>
           <div className="glass-panel px-4 py-2 rounded-2xl flex items-center gap-2 border-green-500/30 bg-green-500/10 shadow-lg shrink-0">
             <CheckCircle2 size={16} className="text-green-400" />
@@ -237,7 +237,7 @@ export default function MedicinesPage() {
 
       {loading ? (
         <div className="flex-1 flex flex-col items-center justify-center gap-3 text-slate-400">
-          <Loader2 size={40} className="animate-spin text-blue-500" />
+          <Loader2 size={40} className="animate-spin text-teal-500" />
           <p>Loading your library...</p>
         </div>
       ) : filteredMedicines.length === 0 ? (
@@ -261,7 +261,7 @@ export default function MedicinesPage() {
                 <h2 className="text-sm font-bold text-slate-400 px-2 uppercase tracking-[0.2em] flex items-center gap-2">
                   {cat === "Morning" && <Sun size={14} className="text-orange-400" />}
                   {cat === "Afternoon" && <Sunset size={14} className="text-amber-400" />}
-                  {cat === "Night" && <Moon size={14} className="text-blue-400" />}
+                  {cat === "Night" && <Moon size={14} className="text-teal-400" />}
                   {cat} Schedule
                 </h2>
                 <div className="space-y-4">
@@ -273,11 +273,11 @@ export default function MedicinesPage() {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         key={med.id} 
-                        className={`glass-panel p-5 rounded-3xl relative overflow-hidden group transition-all cursor-pointer border ${med.status === 'Taken' ? 'border-green-500/30 bg-green-900/10 shadow-[0_0_20px_rgba(34,197,94,0.1)]' : med.status === 'Missed' ? 'border-rose-500/30 bg-rose-900/10' : 'border-slate-700/50 hover:border-blue-500/30'}`}
+                        className={`glass-panel p-5 rounded-3xl relative overflow-hidden group transition-all cursor-pointer border ${med.status === 'Taken' ? 'border-green-500/30 bg-green-900/10 shadow-[0_0_20px_rgba(34,197,94,0.1)]' : med.status === 'Missed' ? 'border-rose-500/30 bg-rose-900/10' : 'border-slate-700/50 hover:border-teal-500/30'}`}
                       >
                         <div className="flex justify-between items-start mb-3">
                           <div className="flex items-center gap-4">
-                            <div className={`w-12 h-12 rounded-full flex items-center justify-center border ${med.status === 'Taken' ? 'bg-green-500/20 text-green-400 border-green-500/20' : med.status === 'Missed' ? 'bg-rose-500/20 text-rose-400 border-rose-500/20' : 'bg-slate-800 text-blue-400 border-blue-500/20'} transition-transform`}>
+                            <div className={`w-12 h-12 rounded-full flex items-center justify-center border ${med.status === 'Taken' ? 'bg-green-500/20 text-green-400 border-green-500/20' : med.status === 'Missed' ? 'bg-rose-500/20 text-rose-400 border-rose-500/20' : 'bg-slate-800 text-teal-400 border-teal-500/20'} transition-transform`}>
                               <Pill size={24} />
                             </div>
                             <div>
@@ -291,7 +291,7 @@ export default function MedicinesPage() {
                           </div>
                           <div className="flex flex-col items-end gap-1">
                             <div className="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1 rounded-full text-[10px] font-bold border border-slate-700 text-slate-300 uppercase">
-                              <Clock size={12} className="text-blue-400" />
+                              <Clock size={12} className="text-teal-400" />
                               {formatTime(med.reminder_time)}
                             </div>
                             <div className="flex items-center gap-1 mt-1">
@@ -339,27 +339,27 @@ export default function MedicinesPage() {
               initial={{ opacity: 0, y: 50, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
-              className="glass-panel w-full max-w-md p-6 rounded-3xl border border-blue-500/30 shadow-2xl overflow-y-auto max-h-[90vh]"
+              className="glass-panel w-full max-w-md p-6 rounded-3xl border border-teal-500/30 shadow-2xl overflow-y-auto max-h-[90vh]"
             >
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <Pill className="text-blue-400" />
+                <Pill className="text-teal-400" />
                 Add Medicine
               </h3>
               
               <form onSubmit={handleAddMedicine} className="space-y-4">
                 <div>
                   <label className="text-xs font-semibold text-slate-400 mb-1 block uppercase tracking-wider">Medicine Name</label>
-                  <input required type="text" value={newMed.name} onChange={(e) => setNewMed({...newMed, name: e.target.value})} className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-blue-500 transition-colors text-white" placeholder="e.g. Paracetamol" />
+                  <input required type="text" value={newMed.name} onChange={(e) => setNewMed({...newMed, name: e.target.value})} className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-teal-500 transition-colors text-white" placeholder="e.g. Paracetamol" />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-semibold text-slate-400 mb-1 block uppercase tracking-wider">Dosage</label>
-                    <input required type="text" value={newMed.dosage} onChange={(e) => setNewMed({...newMed, dosage: e.target.value})} className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-blue-500 transition-colors text-white" placeholder="e.g. 500mg" />
+                    <input required type="text" value={newMed.dosage} onChange={(e) => setNewMed({...newMed, dosage: e.target.value})} className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-teal-500 transition-colors text-white" placeholder="e.g. 500mg" />
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-slate-400 mb-1 block uppercase tracking-wider">Frequency</label>
-                    <select value={newMed.frequency} onChange={(e) => setNewMed({...newMed, frequency: e.target.value})} className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-blue-500 transition-colors text-white appearance-none cursor-pointer">
+                    <select value={newMed.frequency} onChange={(e) => setNewMed({...newMed, frequency: e.target.value})} className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-teal-500 transition-colors text-white appearance-none cursor-pointer">
                       <option value="Daily">Daily</option>
                       <option value="Twice Daily">Twice Daily</option>
                       <option value="Thrice Daily">Thrice Daily</option>
@@ -371,7 +371,7 @@ export default function MedicinesPage() {
 
                 <div>
                   <label className="text-xs font-semibold text-slate-400 mb-1 block uppercase tracking-wider">Notes (Optional)</label>
-                  <input type="text" value={newMed.notes} onChange={(e) => setNewMed({...newMed, notes: e.target.value})} className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-blue-500 transition-colors text-white" placeholder="e.g. Take after meals" />
+                  <input type="text" value={newMed.notes} onChange={(e) => setNewMed({...newMed, notes: e.target.value})} className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-teal-500 transition-colors text-white" placeholder="e.g. Take after meals" />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -381,7 +381,7 @@ export default function MedicinesPage() {
                       <select 
                         value={get12hTime(newMed.reminder_time).h12} 
                         onChange={(e) => handleTimeChange('hour', e.target.value)}
-                        className="flex-1 bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-blue-500 transition-colors text-white appearance-none cursor-pointer"
+                        className="flex-1 bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-teal-500 transition-colors text-white appearance-none cursor-pointer"
                       >
                         {Array.from({ length: 12 }, (_, i) => i + 1).map(h => (
                           <option key={h} value={h}>{h.toString().padStart(2, '0')}</option>
@@ -391,7 +391,7 @@ export default function MedicinesPage() {
                       <select 
                         value={get12hTime(newMed.reminder_time).min} 
                         onChange={(e) => handleTimeChange('minute', e.target.value)}
-                        className="flex-1 bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-blue-500 transition-colors text-white appearance-none cursor-pointer"
+                        className="flex-1 bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-teal-500 transition-colors text-white appearance-none cursor-pointer"
                       >
                         {Array.from({ length: 60 }, (_, i) => i).map(m => (
                           <option key={m} value={m}>{m.toString().padStart(2, '0')}</option>
@@ -400,7 +400,7 @@ export default function MedicinesPage() {
                       <select 
                         value={get12hTime(newMed.reminder_time).ampm} 
                         onChange={(e) => handleTimeChange('ampm', e.target.value)}
-                        className="bg-blue-500/20 border border-blue-500/30 rounded-xl p-3 outline-none focus:border-blue-500 transition-colors text-blue-400 font-bold cursor-pointer"
+                        className="bg-teal-500/20 border border-teal-500/30 rounded-xl p-3 outline-none focus:border-teal-500 transition-colors text-teal-400 font-bold cursor-pointer"
                       >
                         <option value="AM" className="bg-slate-900 text-white">AM</option>
                         <option value="PM" className="bg-slate-900 text-white">PM</option>
@@ -422,7 +422,7 @@ export default function MedicinesPage() {
                           }}
                           className={`py-2 px-1 rounded-xl text-[10px] font-bold border transition-all ${
                             newMed.categories.includes(cat)
-                              ? "bg-blue-500 border-blue-400 text-white shadow-lg shadow-blue-500/20"
+                              ? "bg-teal-500 border-teal-400 text-white shadow-lg shadow-teal-500/20"
                               : "bg-slate-800/50 border-slate-700 text-slate-400 hover:bg-slate-800"
                           }`}
                         >
@@ -444,7 +444,7 @@ export default function MedicinesPage() {
                   <button 
                     type="button"
                     onClick={() => setNewMed({...newMed, reminder_enabled: !newMed.reminder_enabled})}
-                    className={`w-12 h-6 rounded-full transition-colors relative ${newMed.reminder_enabled ? 'bg-blue-500' : 'bg-slate-600'}`}
+                    className={`w-12 h-6 rounded-full transition-colors relative ${newMed.reminder_enabled ? 'bg-teal-500' : 'bg-slate-600'}`}
                   >
                     <motion.div 
                       layout
@@ -457,7 +457,7 @@ export default function MedicinesPage() {
 
                 <div className="flex gap-3 mt-8 pt-4">
                   <button type="button" onClick={() => setIsAddModalOpen(false)} className="flex-1 py-3 rounded-xl glass-panel hover:bg-slate-800 transition-colors font-medium">Cancel</button>
-                  <button type="submit" disabled={isSubmitting} className="flex-1 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center">
+                  <button type="submit" disabled={isSubmitting} className="flex-1 py-3 rounded-xl bg-teal-600 hover:bg-teal-500 font-bold transition-colors shadow-lg shadow-teal-500/20 flex items-center justify-center">
                     {isSubmitting ? <Loader2 size={18} className="animate-spin" /> : "Save Medicine"}
                   </button>
                 </div>

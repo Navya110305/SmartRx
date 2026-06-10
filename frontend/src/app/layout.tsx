@@ -6,14 +6,14 @@ import Navigation from "@/components/Navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Prescripto AI — AI Medical Assistant",
+  title: "SmartRx — AI Medical Assistant",
   description: "AI-powered healthcare application for prescription scanning, medicine tracking, and intelligent medical advice.",
   keywords: ["healthcare", "AI", "prescription", "medicine", "medical assistant"],
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Prescripto AI",
+    title: "SmartRx",
   },
 };
 
@@ -22,7 +22,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: "#0f172a",
+  themeColor: "#0a1628",
 };
 
 export default function RootLayout({

@@ -10,7 +10,7 @@ from app.routes import prescriptions, users, medicines, chat, auth
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("prescripto-ai")
+logger = logging.getLogger("smartrx")
 
 # Initialize database (In production, use Alembic)
 Base.metadata.create_all(bind=engine)
@@ -22,13 +22,13 @@ async def lifespan(app: FastAPI):
         logger.warning("OPENAI_API_KEY is not set. AI features will not work.")
     if not os.getenv("JWT_SECRET"):
         logger.warning("JWT_SECRET is not set. Using default secret (UNSAFE for production).")
-    logger.info("Prescripto AI API started successfully.")
+    logger.info("SmartRx API started successfully.")
     yield
     # Shutdown
-    logger.info("Prescripto AI API shutting down.")
+    logger.info("SmartRx API shutting down.")
 
 app = FastAPI(
-    title="Prescripto AI",
+    title="SmartRx",
     description="AI-powered healthcare application API",
     version="1.0.0",
     lifespan=lifespan
@@ -60,7 +60,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to Prescripto AI API", "status": "operational"}
+    return {"message": "Welcome to SmartRx API", "status": "operational"}
 
 @app.get("/api/v1/health")
 def health_check():

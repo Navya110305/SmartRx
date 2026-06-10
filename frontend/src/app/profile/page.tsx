@@ -96,7 +96,7 @@ export default function ProfilePage() {
     try {
       const meds: any = await api.get("/medicines/");
       
-      let report = `PRESCRIPTO AI - HEALTH REPORT\n`;
+      let report = `SMARTRX - HEALTH REPORT\n`;
       report += `=============================\n\n`;
       report += `Name: ${profileData.name}\n`;
       report += `Email: ${profileData.email}\n`;
@@ -161,7 +161,7 @@ export default function ProfilePage() {
       setNotificationStatus(permission);
       
       if (permission === "granted") {
-        new Notification("Prescripto AI", {
+        new Notification("SmartRx", {
           body: "Health notifications enabled! We'll keep you updated on your medications.",
           icon: "/favicon.ico"
         });
@@ -194,21 +194,21 @@ export default function ProfilePage() {
         </div>
         
         <div className="relative mb-4">
-          <div className="w-28 h-28 rounded-full glass-panel flex items-center justify-center border-4 border-blue-500/30 overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+          <div className="w-28 h-28 rounded-full glass-panel flex items-center justify-center border-4 border-teal-500/30 overflow-hidden shadow-[0_0_30px_rgba(20,184,166,0.3)]">
             {profileData.profile_picture_url ? (
               <img src={profileData.profile_picture_url} alt="Profile" className="w-full h-full object-cover" />
             ) : (
-              <User size={48} className="text-blue-400" />
+              <User size={48} className="text-teal-400" />
             )}
           </div>
           <button 
             onClick={() => setIsEditingProfile(true)}
-            className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center border-2 border-slate-900 text-white shadow-lg hover:bg-blue-400 transition-colors"
+            className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center border-2 border-slate-900 text-white shadow-lg hover:bg-teal-400 transition-colors"
           >
             <Camera size={14} />
           </button>
         </div>
-        <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">{profileData.name}</h1>
+        <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-emerald-400">{profileData.name}</h1>
         <p className="text-sm text-slate-400 mt-1 flex items-center gap-2">
           <Mail size={14} /> {profileData.email || "No email provided"}
         </p>
@@ -307,10 +307,10 @@ export default function ProfilePage() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="glass-panel w-full max-w-md p-6 rounded-3xl border border-blue-500/30 shadow-2xl overflow-y-auto max-h-[90vh]"
+              className="glass-panel w-full max-w-md p-6 rounded-3xl border border-teal-500/30 shadow-2xl overflow-y-auto max-h-[90vh]"
             >
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <User className="text-blue-400" />
+                <User className="text-teal-400" />
                 Edit Profile
               </h3>
               
@@ -321,7 +321,7 @@ export default function ProfilePage() {
                     type="text"
                     value={profileData.name}
                     onChange={(e) => setProfileData({...profileData, name: e.target.value})}
-                    className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-blue-500 transition-colors text-white"
+                    className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-teal-500 transition-colors text-white"
                   />
                 </div>
                 <div>
@@ -330,7 +330,7 @@ export default function ProfilePage() {
                     type="email"
                     value={profileData.email}
                     onChange={(e) => setProfileData({...profileData, email: e.target.value})}
-                    className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-blue-500 transition-colors text-white"
+                    className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-teal-500 transition-colors text-white"
                   />
                 </div>
                 <div>
@@ -339,7 +339,7 @@ export default function ProfilePage() {
                     type="tel"
                     value={profileData.phone_number}
                     onChange={(e) => setProfileData({...profileData, phone_number: e.target.value})}
-                    className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-blue-500 transition-colors text-white"
+                    className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-teal-500 transition-colors text-white"
                     placeholder="+1 234 567 8900"
                   />
                 </div>
@@ -349,7 +349,7 @@ export default function ProfilePage() {
                     type="url"
                     value={profileData.profile_picture_url}
                     onChange={(e) => setProfileData({...profileData, profile_picture_url: e.target.value})}
-                    className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-blue-500 transition-colors text-white"
+                    className="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 outline-none focus:border-teal-500 transition-colors text-white"
                     placeholder="https://example.com/avatar.jpg"
                   />
                 </div>
@@ -364,7 +364,7 @@ export default function ProfilePage() {
                 </button>
                 <button 
                   onClick={saveProfileData}
-                  className="flex-1 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold transition-colors shadow-lg shadow-blue-500/20"
+                  className="flex-1 py-3 rounded-xl bg-teal-600 hover:bg-teal-500 font-bold transition-colors shadow-lg shadow-teal-500/20"
                 >
                   Save Changes
                 </button>
@@ -569,7 +569,7 @@ export default function ProfilePage() {
 
                 <div className="mt-8 pt-6 border-t border-slate-700/50">
                   <p className="text-[10px] text-slate-500 text-center uppercase tracking-[0.2em] font-bold">
-                    Protected by Prescripto Shield Engine
+                    Protected by SmartRx Shield Engine
                   </p>
                 </div>
               </div>

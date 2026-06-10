@@ -76,13 +76,13 @@ export default function Home() {
       {/* Header section */}
       <header className="flex justify-between items-center py-4">
         <div>
-          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-            Prescripto AI
+          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-emerald-400">
+            SmartRx
           </h1>
           <p className="text-sm text-slate-400 mt-1">{greeting()}, {userName} 👋</p>
         </div>
-        <Link href="/profile" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center overflow-hidden border-2 border-blue-500/30">
-          <User className="text-blue-400" size={24} />
+        <Link href="/profile" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center overflow-hidden border-2 border-teal-500/30">
+          <User className="text-teal-400" size={24} />
         </Link>
       </header>
 
@@ -92,10 +92,10 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         className="glass-panel p-6 flex flex-col items-center text-center gap-4 relative overflow-hidden"
       >
-        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl -mr-10 -mt-10" />
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl -ml-10 -mb-10" />
+        <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/20 rounded-full blur-3xl -mr-10 -mt-10" />
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-emerald-500/20 rounded-full blur-3xl -ml-10 -mb-10" />
         
-        <div className="w-20 h-20 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 mb-2">
+        <div className="w-20 h-20 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 mb-2">
           <Camera size={40} />
         </div>
         <div>
@@ -112,28 +112,28 @@ export default function Home() {
 
       {/* Secondary Actions Grid */}
       <div className="grid grid-cols-2 gap-4">
-        <Link href="/chat" className="glass-panel p-5 flex flex-col items-center gap-3 text-center transition-all hover:bg-slate-800/50 hover:border-blue-500/30 w-full h-full">
-          <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
+        <Link href="/chat" className="glass-panel p-5 flex flex-col items-center gap-3 text-center transition-all hover:bg-slate-800/50 hover:border-teal-500/30 w-full h-full">
+          <div className="w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400">
             <MessageSquare size={24} />
           </div>
           <span className="font-medium text-sm">AI Medical Assistant</span>
         </Link>
 
-        <Link href="/medicines" className="glass-panel p-5 flex flex-col items-center gap-3 text-center transition-all hover:bg-slate-800/50 hover:border-blue-500/30 cursor-pointer w-full h-full">
-          <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+        <Link href="/medicines" className="glass-panel p-5 flex flex-col items-center gap-3 text-center transition-all hover:bg-slate-800/50 hover:border-teal-500/30 cursor-pointer w-full h-full">
+          <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
             <Pill size={24} />
           </div>
           <span className="font-medium text-sm">Medicine Library</span>
         </Link>
 
-        <Link href="/chat?action=symptoms" className="glass-panel p-5 flex flex-col items-center gap-3 text-center transition-all hover:bg-slate-800/50 hover:border-blue-500/30 cursor-pointer w-full h-full">
+        <Link href="/chat?action=symptoms" className="glass-panel p-5 flex flex-col items-center gap-3 text-center transition-all hover:bg-slate-800/50 hover:border-teal-500/30 cursor-pointer w-full h-full">
           <div className="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400">
             <Activity size={24} />
           </div>
           <span className="font-medium text-sm">Symptom Checker</span>
         </Link>
 
-        <Link href="/analytics" className="glass-panel p-5 flex flex-col items-center gap-3 text-center transition-all hover:bg-slate-800/50 hover:border-blue-500/30 cursor-pointer w-full h-full">
+        <Link href="/analytics" className="glass-panel p-5 flex flex-col items-center gap-3 text-center transition-all hover:bg-slate-800/50 hover:border-teal-500/30 cursor-pointer w-full h-full">
           <div className="w-12 h-12 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400">
             <Calendar size={24} />
           </div>
@@ -143,7 +143,7 @@ export default function Home() {
       
       {/* Today's Medicines - Real Data */}
       <div className="mt-4">
-        <h3 className="text-lg font-semibold mb-4 pl-2 border-l-4 border-blue-500">Today&apos;s Medicines</h3>
+        <h3 className="text-lg font-semibold mb-4 pl-2 border-l-4 border-teal-500">Today&apos;s Medicines</h3>
         <div className="flex flex-col gap-3">
           {loadingMeds ? (
             <div className="flex items-center justify-center py-8 text-slate-400 gap-2">
@@ -154,7 +154,7 @@ export default function Home() {
             <div className="glass-panel p-6 text-center">
               <Pill size={32} className="text-slate-500 mx-auto mb-3" />
               <p className="text-slate-400 text-sm">No medicines added yet.</p>
-              <Link href="/scan" className="text-blue-400 text-sm font-semibold mt-2 inline-block hover:text-blue-300">
+              <Link href="/scan" className="text-teal-400 text-sm font-semibold mt-2 inline-block hover:text-teal-300">
                 Scan a prescription to get started →
               </Link>
             </div>
@@ -168,7 +168,7 @@ export default function Home() {
               >
                 <div className="flex items-center gap-4">
                   <div className={`w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center ${
-                    med.status === "Taken" ? "text-green-400" : med.status === "Missed" ? "text-rose-400" : "text-blue-400"
+                    med.status === "Taken" ? "text-green-400" : med.status === "Missed" ? "text-rose-400" : "text-teal-400"
                   }`}>
                     <Pill size={20} />
                   </div>

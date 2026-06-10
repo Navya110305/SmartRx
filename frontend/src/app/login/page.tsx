@@ -64,9 +64,9 @@ export default function LoginPage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
-            className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/30 mx-auto mb-4 border border-white/10"
+            className="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-teal-500/30 mx-auto mb-4 border border-white/10"
           >
-            <span className="text-white font-bold text-2xl">P</span>
+            <span className="text-white font-bold text-2xl">S</span>
           </motion.div>
           <h1 className="text-3xl font-bold tracking-tight text-white mb-2">Welcome Back</h1>
           <p className="text-slate-400 text-sm">Log in to access your AI medical assistant</p>
@@ -75,8 +75,8 @@ export default function LoginPage() {
 
         <div className="glass-panel-elevated p-6 md:p-8 relative overflow-hidden">
           {/* Subtle background glow */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -ml-10 -mb-10 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -ml-10 -mb-10 pointer-events-none" />
 
           <form onSubmit={handleLogin} className="relative flex flex-col gap-4">
             <div className="space-y-1">
@@ -89,7 +89,7 @@ export default function LoginPage() {
                   type="email" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-slate-800/50 border border-slate-700/50 text-white rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:border-blue-500/50 focus:bg-slate-800/80 transition-all placeholder-slate-600 text-sm"
+                  className="w-full bg-slate-800/50 border border-slate-700/50 text-white rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:border-teal-500/50 focus:bg-slate-800/80 transition-all placeholder-slate-600 text-sm"
                   placeholder="name@example.com"
                   required
                 />
@@ -99,7 +99,7 @@ export default function LoginPage() {
             <div className="space-y-1">
               <div className="flex justify-between items-center ml-1">
                 <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Password</label>
-                <Link href="#" className="text-xs text-blue-400 hover:text-blue-300 transition-colors">Forgot?</Link>
+                <Link href="#" className="text-xs text-teal-400 hover:text-teal-300 transition-colors">Forgot?</Link>
               </div>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -109,7 +109,7 @@ export default function LoginPage() {
                   type="password" 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-slate-800/50 border border-slate-700/50 text-white rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:border-blue-500/50 focus:bg-slate-800/80 transition-all placeholder-slate-600 text-sm"
+                  className="w-full bg-slate-800/50 border border-slate-700/50 text-white rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:border-teal-500/50 focus:bg-slate-800/80 transition-all placeholder-slate-600 text-sm"
                   placeholder="••••••••"
                   required
                 />
@@ -120,7 +120,7 @@ export default function LoginPage() {
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={isLoading}
-              className="mt-4 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-blue-500/25 border border-white/10 flex items-center justify-center gap-2 touch-feedback disabled:opacity-70 transition-all"
+              className="mt-4 w-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-teal-500/25 border border-white/10 flex items-center justify-center gap-2 touch-feedback disabled:opacity-70 transition-all"
             >
               {isLoading ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -166,7 +166,7 @@ export default function LoginPage() {
 
         <p className="text-center mt-6 text-sm text-slate-400">
           Don't have an account?{" "}
-          <Link href="/signup" className="text-blue-400 font-semibold hover:text-blue-300 transition-colors">
+          <Link href="/signup" className="text-teal-400 font-semibold hover:text-teal-300 transition-colors">
             Sign up
           </Link>
         </p>

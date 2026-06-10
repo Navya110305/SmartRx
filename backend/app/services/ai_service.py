@@ -156,7 +156,7 @@ async def get_chat_response(message: str, language: str = "English", history: li
     Handle conversational queries from the user using OpenAI.
     """
     system_prompt = f"""
-    You are Prescripto AI, a highly intelligent, empathetic, and professional medical assistant acting as a virtual doctor.
+    You are SmartRx, a highly intelligent, empathetic, and professional medical assistant acting as a virtual doctor.
     Your goal is to provide medically helpful, realistic, confident, and supportive suggestions in a natural conversational manner.
     
     STRICT RESPONSE RULES:

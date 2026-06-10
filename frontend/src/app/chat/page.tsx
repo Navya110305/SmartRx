@@ -53,7 +53,7 @@ function ChatContent() {
       const data: any = await api.get("/chat/");
       
       if (data.length === 0) {
-        let initialText = "Hello! I am Prescripto AI. How can I help you understand your medicines today?";
+        let initialText = "Hello! I am SmartRx. How can I help you understand your medicines today?";
         
         if (action === "symptoms") {
           initialText = "I see you'd like to check some symptoms. Please describe what you're feeling, and I'll help you understand what might be happening.";
@@ -92,7 +92,7 @@ function ChatContent() {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     
-    const lang = localStorage.getItem("prescripto_lang") || "English";
+    const lang = localStorage.getItem("smartrx_lang") || "English";
     if (lang === "Spanish") utterance.lang = 'es-ES';
     else if (lang === "French") utterance.lang = 'fr-FR';
     else if (lang === "Hindi") utterance.lang = 'hi-IN';
@@ -121,7 +121,7 @@ function ChatContent() {
     setIsTyping(true);
 
     try {
-      const lang = localStorage.getItem("prescripto_lang") || "English";
+      const lang = localStorage.getItem("smartrx_lang") || "English";
       const data: any = await api.post("/chat/", {
         message: userMsg.text,
         language: lang
@@ -145,7 +145,7 @@ function ChatContent() {
   return (
     <div className="flex flex-col h-full min-h-[85vh]">
       <header className="flex items-center gap-3 py-4 mb-2">
-        <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
+        <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400">
           <Bot size={24} />
         </div>
         <div>
@@ -162,12 +162,12 @@ function ChatContent() {
             key={msg.id} 
             className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
           >
-            <div className={`max-w-[80%] p-4 rounded-2xl relative group ${msg.sender === "user" ? "bg-blue-600 rounded-br-none" : "glass-panel rounded-bl-none"}`}>
+            <div className={`max-w-[80%] p-4 rounded-2xl relative group ${msg.sender === "user" ? "bg-teal-600 rounded-br-none" : "glass-panel rounded-bl-none"}`}>
               <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.text}</p>
               {msg.sender === "ai" && (
                 <button 
                   onClick={() => speakText(msg.text)}
-                  className="absolute -right-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-blue-400 p-1"
+                  className="absolute -right-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-teal-400 p-1"
                 >
                   <Volume2 size={16} />
                 </button>
@@ -178,7 +178,7 @@ function ChatContent() {
         {isTyping && (
           <div className="flex justify-start">
             <div className="glass-panel p-4 rounded-2xl rounded-bl-none flex items-center gap-2">
-              <Loader2 className="animate-spin text-purple-400" size={16} />
+              <Loader2 className="animate-spin text-teal-400" size={16} />
               <span className="text-sm text-slate-400">AI is thinking...</span>
             </div>
           </div>
@@ -186,10 +186,10 @@ function ChatContent() {
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="mt-auto glass-panel p-2 rounded-full flex items-center gap-2 border border-blue-500/30">
+      <div className="mt-auto glass-panel p-2 rounded-full flex items-center gap-2 border border-teal-500/30">
         <button 
           onClick={toggleListening}
-          className={`p-3 transition-colors ${isListening ? 'text-rose-400 animate-pulse' : 'text-slate-400 hover:text-blue-400'}`}
+          className={`p-3 transition-colors ${isListening ? 'text-rose-400 animate-pulse' : 'text-slate-400 hover:text-teal-400'}`}
         >
           {isListening ? <MicOff size={20} /> : <Mic size={20} />}
         </button>
@@ -200,7 +200,7 @@ function ChatContent() {
             }
             setIsAiMuted(!isAiMuted);
           }}
-          className={`p-3 transition-colors ${isAiMuted ? 'text-rose-400' : 'text-slate-400 hover:text-blue-400'}`}
+          className={`p-3 transition-colors ${isAiMuted ? 'text-rose-400' : 'text-slate-400 hover:text-teal-400'}`}
           title={isAiMuted ? "Unmute AI Speech" : "Mute AI Speech"}
         >
           {isAiMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
@@ -216,7 +216,7 @@ function ChatContent() {
         <button 
           onClick={handleSend}
           disabled={!input.trim()}
-          className="p-3 bg-blue-500/20 text-blue-400 rounded-full hover:bg-blue-500/40 transition-colors disabled:opacity-50"
+          className="p-3 bg-teal-500/20 text-teal-400 rounded-full hover:bg-teal-500/40 transition-colors disabled:opacity-50"
         >
           <Send size={20} />
         </button>
@@ -229,7 +229,7 @@ export default function ChatPage() {
   return (
     <Suspense fallback={
       <div className="flex-1 flex items-center justify-center">
-        <Loader2 className="animate-spin text-purple-400" size={40} />
+        <Loader2 className="animate-spin text-teal-400" size={40} />
       </div>
     }>
       <ChatContent />

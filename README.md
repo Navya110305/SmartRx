@@ -1,4 +1,4 @@
-# 🩺 Prescripto AI — Intelligent Prescription & Medication Assistant
+# 💊 SmartRx — Intelligent Prescription & Medication Assistant
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
@@ -7,23 +7,9 @@
 [![NVIDIA NIM](https://img.shields.io/badge/NVIDIA%20NIM-76B900?style=for-the-badge&logo=nvidia&logoColor=white)](https://build.nvidia.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-### 🌐 Live Production Deployments
-*   🚀 **Production Web Application**: [https://prescripto-ai-frontend.vercel.app](https://prescripto-ai-frontend.vercel.app)
-*   ⚙️ **Production API Service**: [https://prescripto-backend-rv5p.onrender.com](https://prescripto-backend-rv5p.onrender.com)
-*   📄 **Interactive API Docs (Swagger)**: [https://prescripto-backend-rv5p.onrender.com/docs](https://prescripto-backend-rv5p.onrender.com/docs)
-
 ---
 
-Prescripto AI is a state-of-the-art, premium medical assistant application. It allows users to scan paper prescriptions using advanced AI computer vision, automatically extracts prescribed medications with precise dosages and warnings, performs safety cross-checks against the official **OpenFDA database**, tracks daily compliance streaks in a gorgeous interactive tracker, and features a real-time conversational AI health assistant.
-
----
-
-
-## 📸 Desktop & Mobile Preview
-
-The application features a sleek glassmorphic dashboard optimized for both desktop view and responsive Progressive Web App (PWA) installation on iOS and Android devices.
-
-*Sleek interactive medicine compliance tracker, AI assistant conversation panel, and dynamic health stats.*
+SmartRx is a state-of-the-art, premium medical assistant application. It allows users to scan paper prescriptions using advanced AI computer vision, automatically extracts prescribed medications with precise dosages and warnings, performs safety cross-checks against the official **OpenFDA database**, tracks daily compliance streaks in a gorgeous interactive tracker, and features a real-time conversational AI health assistant.
 
 ---
 
@@ -100,7 +86,7 @@ Create a `.env` file in the `backend/` directory using the template below:
 DATABASE_URL=sqlite:///./sql_app.db
 
 # Authentication Secret
-JWT_SECRET=prescripto-ai-jwt-secret-key-2026-change-in-production
+JWT_SECRET=your-jwt-secret-key-change-in-production
 
 # AI Services (NVIDIA NIM or OpenAI Key)
 OPENAI_API_KEY=your_nvidia_nim_or_openai_api_key_here
@@ -138,20 +124,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
-
----
-
-## 🛡️ Production Deployment
-
-### Backend (Render / Heroku)
-- Runtime: `Python 3`
-- Build Command: `pip install -r requirements.txt`
-- Start Command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-- Configure your production `.env` variables under Render/Heroku Dashboard Settings.
-
-### Frontend (Vercel)
-- Vercel automatically detects the Next.js workspace.
-- Configure environment variable: `NEXT_PUBLIC_API_URL` pointing to your deployed backend URL.
 
 ---
 

@@ -181,12 +181,12 @@ export default function ScannerPage() {
           <div className="flex-1 glass-panel border-dashed border-2 border-slate-600 rounded-3xl flex flex-col items-center justify-center p-4 text-center relative overflow-hidden">
             
             {isScanning ? (
-              <div className="flex flex-col items-center gap-4 text-blue-400 z-10">
+              <div className="flex flex-col items-center gap-4 text-teal-400 z-10">
                 <Loader2 size={48} className="animate-spin" />
                 <p className="font-medium animate-pulse text-lg">AI Extracting Data...</p>
                 
                 <motion.div 
-                  className="absolute top-0 left-0 w-full h-1 bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,1)] z-20"
+                  className="absolute top-0 left-0 w-full h-1 bg-teal-500 shadow-[0_0_20px_rgba(20,184,166,1)] z-20"
                   animate={{ top: ["0%", "100%", "0%"] }}
                   transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
                 />
@@ -204,7 +204,7 @@ export default function ScannerPage() {
                   className="flex-1 w-full object-cover"
                 />
                 <div className="absolute top-6 left-6 right-6 flex justify-center">
-                  <div className="px-4 py-1.5 bg-blue-500/20 backdrop-blur-md rounded-full border border-blue-500/30 text-xs font-bold uppercase tracking-widest text-blue-400">
+                  <div className="px-4 py-1.5 bg-teal-500/20 backdrop-blur-md rounded-full border border-teal-500/30 text-xs font-bold uppercase tracking-widest text-teal-400">
                     Align Prescription Clearly
                   </div>
                 </div>
@@ -214,7 +214,7 @@ export default function ScannerPage() {
                   </button>
                   <button 
                     onClick={capturePhoto} 
-                    className="w-18 h-18 rounded-full border-4 border-white bg-blue-500/30 backdrop-blur-md flex items-center justify-center relative group"
+                    className="w-18 h-18 rounded-full border-4 border-white bg-teal-500/30 backdrop-blur-md flex items-center justify-center relative group"
                   >
                     <div className="w-14 h-14 bg-white rounded-full group-active:scale-90 transition-transform"></div>
                   </button>
@@ -223,7 +223,7 @@ export default function ScannerPage() {
               </div>
             ) : (
               <div className="p-4 flex flex-col items-center">
-                <div className="w-24 h-24 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4 border border-blue-500/20">
+                <div className="w-24 h-24 rounded-full bg-teal-500/10 flex items-center justify-center text-teal-400 mb-4 border border-teal-500/20">
                   <Camera size={48} />
                 </div>
                 <h2 className="text-2xl font-bold mb-2 tracking-tight">Prescription Scanner</h2>
@@ -280,9 +280,9 @@ export default function ScannerPage() {
           className="flex-1 flex flex-col gap-6 pb-10"
         >
           <div className="flex flex-col gap-4">
-            <div className="glass-panel p-5 border-l-4 border-l-blue-500 overflow-hidden relative">
-               <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl -mr-12 -mt-12" />
-               <h3 className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-2">Analysis Summary</h3>
+            <div className="glass-panel p-5 border-l-4 border-l-teal-500 overflow-hidden relative">
+               <div className="absolute top-0 right-0 w-24 h-24 bg-teal-500/5 rounded-full blur-2xl -mr-12 -mt-12" />
+               <h3 className="text-xs font-bold uppercase tracking-widest text-teal-400 mb-2">Analysis Summary</h3>
                <p className="text-slate-200 leading-relaxed italic">
                  "{result.summary}"
                </p>
@@ -326,7 +326,7 @@ export default function ScannerPage() {
             </div>
 
             <h3 className="text-lg font-bold mt-2 flex items-center gap-2">
-               <Pill size={20} className="text-purple-400" />
+               <Pill size={20} className="text-teal-400" />
                Identified Medicines
             </h3>
 
@@ -337,11 +337,11 @@ export default function ScannerPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.1 }}
                   key={idx} 
-                  className="glass-panel p-4 flex flex-col gap-3 border border-slate-700/50 hover:border-blue-500/30 transition-colors"
+                  className="glass-panel p-4 flex flex-col gap-3 border border-slate-700/50 hover:border-teal-500/30 transition-colors"
                 >
                   <div className="flex justify-between items-start">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-blue-400 border border-blue-500/10">
+                      <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-teal-400 border border-teal-500/10">
                         <Pill size={20} />
                       </div>
                       <div>
@@ -350,9 +350,9 @@ export default function ScannerPage() {
                       </div>
                     </div>
                     {med.verified && (
-                      <div className="flex items-center gap-1 px-2 py-0.5 bg-blue-500/10 rounded-full border border-blue-500/20">
-                        <CheckCircle2 size={10} className="text-blue-400" />
-                        <span className="text-[10px] font-bold text-blue-400 uppercase">Verified</span>
+                      <div className="flex items-center gap-1 px-2 py-0.5 bg-teal-500/10 rounded-full border border-teal-500/20">
+                        <CheckCircle2 size={10} className="text-teal-400" />
+                        <span className="text-[10px] font-bold text-teal-400 uppercase">Verified</span>
                       </div>
                     )}
                   </div>
@@ -369,8 +369,8 @@ export default function ScannerPage() {
                   </div>
 
                   {med.instructions && med.instructions !== "null" && med.instructions !== "None" && (
-                    <div className="mt-1 p-2 bg-blue-500/5 rounded-lg border border-blue-500/10">
-                       <p className="text-[10px] text-blue-400 uppercase font-bold tracking-tighter mb-0.5">Instructions</p>
+                    <div className="mt-1 p-2 bg-teal-500/5 rounded-lg border border-teal-500/10">
+                       <p className="text-[10px] text-teal-400 uppercase font-bold tracking-tighter mb-0.5">Instructions</p>
                        <p className="text-xs text-slate-300 font-medium">{med.instructions}</p>
                     </div>
                   )}

@@ -50,7 +50,7 @@ export default function AnalyticsPage() {
   if (loading) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center h-full gap-3 text-slate-400">
-        <Loader2 size={40} className="animate-spin text-blue-500" />
+        <Loader2 size={40} className="animate-spin text-teal-500" />
         <p>Analyzing health data...</p>
       </div>
     );
@@ -59,11 +59,11 @@ export default function AnalyticsPage() {
   return (
     <div className="flex flex-col h-full gap-6 pb-6">
       <motion.header initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-3 py-2">
-        <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+        <div className="w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 shadow-[0_0_15px_rgba(20,184,166,0.5)]">
           <Activity size={28} />
         </div>
         <div>
-          <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400">Health Analytics</h1>
+          <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-emerald-400">Health Analytics</h1>
           <p className="text-sm text-slate-400">Your real-time adherence data</p>
         </div>
       </motion.header>
@@ -73,7 +73,7 @@ export default function AnalyticsPage() {
         animate={{ y: 0, opacity: 1 }}
         className="glass-panel p-6 rounded-3xl relative overflow-hidden"
       >
-        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none" />
         
         <h2 className="text-sm font-semibold text-slate-300 mb-6 uppercase tracking-wider">Today's Adherence</h2>
         
@@ -98,7 +98,7 @@ export default function AnalyticsPage() {
                       ))}
                     </Pie>
                     <Tooltip 
-                      contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.9)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: '12px' }}
+                      contentStyle={{ backgroundColor: 'rgba(10, 22, 40, 0.9)', border: '1px solid rgba(20,184,166,0.2)', borderRadius: '12px' }}
                       itemStyle={{ color: '#e2e8f0' }}
                     />
                   </PieChart>
@@ -158,8 +158,8 @@ export default function AnalyticsPage() {
           transition={{ delay: 0.2 }}
           className="glass-panel p-5 rounded-3xl flex flex-col items-center justify-center gap-2 text-center relative overflow-hidden"
         >
-          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-blue-500/5 blur-xl" />
-          <CheckCircle2 size={28} className="text-blue-400" />
+          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-teal-500/5 blur-xl" />
+          <CheckCircle2 size={28} className="text-teal-400" />
           <div>
             <p className="text-3xl font-bold">{takenMeds}</p>
             <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Completed</p>
@@ -171,7 +171,7 @@ export default function AnalyticsPage() {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className={`glass-panel p-5 rounded-3xl border-l-4 ${missedMeds > 0 ? 'border-l-rose-500' : adherenceRate === 100 ? 'border-l-green-500' : 'border-l-blue-500'}`}
+        className={`glass-panel p-5 rounded-3xl border-l-4 ${missedMeds > 0 ? 'border-l-rose-500' : adherenceRate === 100 ? 'border-l-green-500' : 'border-l-teal-500'}`}
       >
         <div className="flex items-start gap-4">
           {missedMeds > 0 ? (

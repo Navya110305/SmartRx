@@ -1,11 +1,11 @@
 {
-  "name": "Prescripto AI",
-  "short_name": "Prescripto",
+  "name": "SmartRx",
+  "short_name": "SmartRx",
   "description": "AI-powered healthcare application for prescription scanning, medicine tracking, and intelligent medical advice.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
+  "background_color": "#0a1628",
+  "theme_color": "#0a1628",
   "orientation": "portrait-primary",
   "icons": [
     {

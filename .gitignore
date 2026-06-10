@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Testing
+coverage/
+
+# Next.js build
+.next/
+out/
+build/
+.vercel
+
+# TypeScript build info
+*.tsbuildinfo
+next-env.d.ts
+
+# Python virtual environment and caches
+backend/venv/
+backend/__pycache__/
+backend/**/*.pyc
+__pycache__/
+*.pyc
+
+# Local Databases
+backend/sql_app.db
+backend/prescripto.db
+*.db
+*.db-journal
+*.sqlite3
+
+# Env files (contains keys, secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+backend/.env
+backend/.env.local
+frontend/.env
+frontend/.env.local
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Scratch and Logs
+backend/scratch/
+*.log
+*.log*
+lint_errors.json
+lint_errors.log
+lint_errors.txt

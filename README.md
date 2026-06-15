@@ -1,15 +1,19 @@
 # 💊 SmartRx — Intelligent Prescription & Medication Assistant
 
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-smartrx--frontend.onrender.com-00C853?style=for-the-badge)](https://smartrx-frontend.onrender.com)
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
 [![NVIDIA NIM](https://img.shields.io/badge/NVIDIA%20NIM-76B900?style=for-the-badge&logo=nvidia&logoColor=white)](https://build.nvidia.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Deploy to Render](https://img.shields.io/badge/Deploy_to-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://render.com/deploy?repo=https://github.com/Navya110305/SmartRx)
 
 ---
 
 SmartRx is a state-of-the-art, premium medical assistant application. It allows users to scan paper prescriptions using advanced AI computer vision, automatically extracts prescribed medications with precise dosages and warnings, performs safety cross-checks against the official **OpenFDA database**, tracks daily compliance streaks in a gorgeous interactive tracker, and features a real-time conversational AI health assistant.
+
+> **🌐 Live Demo:** [https://smartrx-frontend.onrender.com](https://smartrx-frontend.onrender.com)
 
 ---
 
@@ -29,6 +33,20 @@ SmartRx is a state-of-the-art, premium medical assistant application. It allows 
    - Secure sign-up, login, and profile tracking using JWT access tokens.
 6. **📱 Progressive Web App (PWA)**
    - Installed seamlessly on iOS Safari and Android Chrome as a native app with customized startup icons.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | Next.js 16, React 19, TypeScript, Tailwind CSS v4 |
+| **Backend** | FastAPI, Python 3.11+, SQLAlchemy, Uvicorn |
+| **Database** | SQLite (dev) / PostgreSQL (production) |
+| **AI Engine** | NVIDIA NIM (Llama 3.2 Vision + Llama 3.3 70B) / OpenAI GPT-4o |
+| **Drug Safety** | OpenFDA API |
+| **Auth** | JWT (PyJWT) + bcrypt |
+| **Deployment** | Render (Blueprint IaC) |
 
 ---
 
@@ -124,6 +142,20 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+---
+
+## ☁️ Deployment (Render)
+
+This project includes a `render.yaml` Blueprint for one-click deployment to [Render](https://render.com):
+
+1. Click the **Deploy to Render** badge above (or go to Render Dashboard → New → Blueprint).
+2. Connect your GitHub repo and select the `main` branch.
+3. Set the required environment variables when prompted:
+   - `OPENAI_API_KEY` — Your NVIDIA NIM or OpenAI API key
+   - `FRONTEND_URL` — Your frontend's Render URL (e.g. `https://smartrx-frontend.onrender.com`)
+   - `NEXT_PUBLIC_API_URL` — Your backend's Render URL (e.g. `https://smartrx-backend.onrender.com`)
+4. Click **Deploy Blueprint** — Render provisions both services automatically.
 
 ---
 

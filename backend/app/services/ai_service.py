@@ -11,10 +11,21 @@ load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY", "")
 is_nvidia = api_key.startswith("nvapi-")
 
-client = AsyncOpenAI(
-    base_url="https://integrate.api.nvidia.com/v1" if is_nvidia else "https://api.openai.com/v1",
-    api_key=api_key
-)
+# Lazy client initialization to avoid crash when API key is not yet set
+_client = None
+
+def get_client():
+    global _client
+    current_key = os.getenv("OPENAI_API_KEY", "")
+    if not current_key:
+        raise RuntimeError("OPENAI_API_KEY environment variable is not set.")
+    if _client is None:
+        _is_nvidia = current_key.startswith("nvapi-")
+        _client = AsyncOpenAI(
+            base_url="https://integrate.api.nvidia.com/v1" if _is_nvidia else "https://api.openai.com/v1",
+            api_key=current_key
+        )
+    return _client
 
 async def interpret_prescription(image_content: bytes, language: str = "English") -> str:
     """
@@ -62,7 +73,7 @@ async def interpret_prescription(image_content: bytes, language: str = "English"
         model = "meta/llama-3.2-11b-vision-instruct" if is_nvidia else "gpt-4o-mini"
         
         # ... (rest of vision/Nvidia processing code remains unchanged)
-        response = await client.chat.completions.create(
+        response = await get_client().chat.completions.create(
             model=model,
             messages=[
                 {
@@ -99,7 +110,7 @@ async def interpret_prescription(image_content: bytes, language: str = "English"
             print("Failed to decode JSON, using fallback parsing...")
             chat_model = "meta/llama-3.3-70b-instruct" if is_nvidia else "gpt-4o-mini"
             fix_prompt = f"Convert the following text into the requested JSON format. Respond with ONLY valid JSON.\nText:\n{raw_result}\n\nSchema:\n{{\"doctor_name\": \"string or null\", \"patient_name\": \"string or null\", \"hospital_name\": \"string or null\", \"date\": \"string or null\", \"diagnosis\": \"string or null\", \"medicines\": [{{\"name\": \"string\", \"dosage\": \"string\", \"timing\": \"string\", \"duration\": \"string\", \"instructions\": \"string\"}}], \"summary\": \"string\", \"disclaimer\": \"string\", \"extracted_text\": \"string\"}}"
-            fix_response = await client.chat.completions.create(
+            fix_response = await get_client().chat.completions.create(
                 model=chat_model,
                 messages=[{"role": "user", "content": fix_prompt}],
                 temperature=0.1,
@@ -176,7 +187,7 @@ async def get_chat_response(message: str, language: str = "English", history: li
     messages.append({"role": "user", "content": message})
     
     try:
-        response = await client.chat.completions.create(
+        response = await get_client().chat.completions.create(
             model="meta/llama-3.3-70b-instruct" if is_nvidia else "gpt-4o",
             messages=messages,
             temperature=0.5

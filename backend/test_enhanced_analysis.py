@@ -36,8 +36,9 @@ mock_json = """{
 }"""
 
 async def run_test():
-    with patch('app.services.ai_service.client.chat.completions.create', new_callable=AsyncMock) as mock_create:
-        mock_create.return_value = MockResponse(mock_json)
+    mock_client = AsyncMock()
+    mock_client.chat.completions.create.return_value = MockResponse(mock_json)
+    with patch('app.services.ai_service.get_client', return_value=mock_client):
         # Pass dummy bytes as the image content
         result_json = await interpret_prescription(b"dummy_image_content")
         return result_json

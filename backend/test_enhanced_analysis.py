@@ -3,21 +3,47 @@ import asyncio
 from app.services.ai_service import interpret_prescription
 from dotenv import load_dotenv
 import json
+from unittest.mock import AsyncMock, patch
 
 load_dotenv()
 
-sample_ocr = """
-Dr. Smith's Clinic
-Patient: John Doe
-Date: 05/08/2026
+# Mock objects to simulate OpenAI/Nvidia client response structure
+class MockMessage:
+    def __init__(self, content):
+        self.content = content
 
-Rx:
-1. Advil 200mg - Take 2 tablets every 4 hours as needed for pain.
-2. Amoxicillin 500mg - 1 capsule three times a day for 7 days.
-"""
+class MockChoice:
+    def __init__(self, content):
+        self.message = MockMessage(content)
+
+class MockResponse:
+    def __init__(self, content):
+        self.choices = [MockChoice(content)]
+
+mock_json = """{
+    "doctor_name": "Dr. Smith",
+    "patient_name": "John Doe",
+    "hospital_name": "Clinic",
+    "date": "05/08/2026",
+    "diagnosis": "Infection",
+    "medicines": [
+        {"name": "Advil", "dosage": "200mg", "timing": "every 4 hours", "duration": "3 days", "instructions": "Take for pain"},
+        {"name": "Amoxicillin", "dosage": "500mg", "timing": "three times a day", "duration": "7 days", "instructions": "Finish course"}
+    ],
+    "summary": "Sample prescription details.",
+    "disclaimer": "Contact the doctor or hospital for prescription information.",
+    "extracted_text": "Advil and Amoxicillin prescription details."
+}"""
+
+async def run_test():
+    with patch('app.services.ai_service.client.chat.completions.create', new_callable=AsyncMock) as mock_create:
+        mock_create.return_value = MockResponse(mock_json)
+        # Pass dummy bytes as the image content
+        result_json = await interpret_prescription(b"dummy_image_content")
+        return result_json
 
 print("Interpreting prescription and verifying with OpenFDA...")
-result_json = asyncio.run(interpret_prescription(sample_ocr))
+result_json = asyncio.run(run_test())
 result = json.loads(result_json)
 
 print("\n--- RESULTS ---")
@@ -32,3 +58,4 @@ for med in result.get("medicines", []):
     print(f"  Timing: {med.get('timing')}")
 
 print(f"\nDisclaimer: {result.get('disclaimer')}")
+

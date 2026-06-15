@@ -18,10 +18,7 @@ services:
       - key: JWT_SECRET
         generateValue: true # Render will automatically generate a secure secret
       - key: FRONTEND_URL
-        fromService:
-          name: smartrx-frontend
-          type: web
-          property: url
+        sync: false # Put your frontend's public Render URL here (e.g. https://smartrx-frontend.onrender.com)
 
   # Frontend Application (Next.js)
   - type: web
@@ -32,7 +29,4 @@ services:
     startCommand: npm run start
     envVars:
       - key: NEXT_PUBLIC_API_URL
-        fromService:
-          name: smartrx-backend
-          type: web
-          property: url
+        sync: false # Put your backend's public Render URL here (e.g. https://smartrx-backend.onrender.com)

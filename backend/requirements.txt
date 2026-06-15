@@ -8,7 +8,7 @@ python-multipart
 requests
 pyjwt
 passlib[bcrypt]
-bcrypt==4.0.1
+bcrypt
 httpx
 alembic
 email-validator

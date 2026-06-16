@@ -3,11 +3,9 @@ uvicorn[standard]
 sqlalchemy
 python-dotenv
 openai
-google-cloud-vision
 python-multipart
 requests
 pyjwt
-passlib[bcrypt]
 bcrypt
 httpx
 alembic

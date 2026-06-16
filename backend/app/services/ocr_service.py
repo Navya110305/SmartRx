@@ -1,6 +1,5 @@
 import os
 import base64
-from google.cloud import vision
 from openai import AsyncOpenAI
 from dotenv import load_dotenv
 
@@ -13,6 +12,7 @@ async def extract_text_from_image(image_content: bytes) -> str:
     # 1. Try Google Cloud Vision if credentials exist
     if os.getenv("GOOGLE_APPLICATION_CREDENTIALS"):
         try:
+            from google.cloud import vision
             # Note: Google Cloud Vision client is synchronous, 
             # but we can wrap it if needed. For now, we'll keep it as is 
             # or use an async wrapper if performance becomes an issue.

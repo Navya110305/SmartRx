@@ -17,6 +17,19 @@ if (isBrowser) {
   }
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || defaultApiUrl;
+let API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || defaultApiUrl;
+
+// Sanitize and dynamically correct API_BASE_URL at runtime in the browser
+if (isBrowser) {
+  // If the API URL points to the frontend Render domain (a common misconfiguration), dynamically map it to the backend domain
+  if (API_BASE_URL.includes('smartrx-frontend.onrender.com')) {
+    API_BASE_URL = API_BASE_URL.replace('smartrx-frontend.onrender.com', 'smartrx-backend.onrender.com');
+  }
+  
+  // Render subdomains on *.onrender.com do not use port 8000 externally (they are served over HTTPS port 443)
+  if (API_BASE_URL.includes('.onrender.com:8000')) {
+    API_BASE_URL = API_BASE_URL.replace(':8000', '');
+  }
+}
 
 export default API_BASE_URL;
